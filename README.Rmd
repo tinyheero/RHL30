@@ -1,0 +1,77 @@
+---
+output: 
+  github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/"
+)
+```
+
+# RHL30
+
+An R Package for the RHL30 prognostic predictor in relapsed Hodgkin lymphoma
+samples. The predictor was published at:
+
+Chan, F. C. et al. Prognostic Model to Predict Post-Autologous Stem-Cell 
+Transplantation Outcomes in Classical Hodgkin Lymphoma. J Clin Oncol 
+JCO2017727925 (2017) doi:10.1200/JCO.2017.72.7925.
+
+# How to Install
+
+To get the released version from CRAN:
+
+```{r, eval = FALSE}
+install.packages("survutils")
+```
+
+You can also get survutils through conda:
+
+```{bash, eval = FALSE}
+conda install -c fongchun r-survutils
+```
+
+To install the latest developmental version from github:
+
+```{r, eval = FALSE}
+devtools::install_github("tinyheero/survutils")
+```
+
+# How to use
+
+We will be use the BCCA relapsed hodgkin lymphoma cohort (n=68) from the paper
+as an example of how to generate RHL30 predictor score. The following steps will
+reproduce the scores from the paper. 
+
+First, let's load the RHL30 package and the RHL30 model:
+
+```{r}
+library("RHL30")
+rhl30_model_df <- get_rhl30_model_coef_df()
+rhl30_model_df
+```
+
+
+```{r chung_tag}
+hk_genes <- 
+  dplyr::filter(rhl30_model_df, gene_type == "housekeeper") %>%
+  dplyr::pull("gene_name")
+
+exprs_file <- 
+  system.file("extdata", "bcca_rhl_rhl30_gene_exprs_mat.tsv", package = "RHL30")
+exprs_mat <- load_exprs_mat(exprs_file)
+sample_normalizer_values <- get_sample_normalizer_value(exprs_mat, hk_genes)
+exprs_mat_norm <- normalize_exprs_mat(exprs_mat, sample_normalizer_values)
+rhl30_df <- get_rhl30_scores_df(exprs_mat_norm, rhl30_model_df)
+```
+
+# R Session
+
+```{r}
+devtools::session_info()
+```
