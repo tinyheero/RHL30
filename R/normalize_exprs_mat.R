@@ -4,13 +4,12 @@
 #' sample. The normalizer value is based on the geometric mean of the input
 #' `normalizer_genes`
 #'
-#' @param exprs_mat The expression matrix
+#' @param exprs_mat The expression matrix.
 #' @param normalizer_genes Character vector containing the genes to use for 
 #'   calculating the normalizer
 #' @return A numeric vector with the samples as names and the normalizer 
 #'   as values
 #' @export
-#' @examples
 get_sample_normalizer_value <- function(exprs_mat, normalizer_genes) {
 
   message(
