@@ -4,10 +4,10 @@
 # RHL30
 
 An R Package for the RHL30 prognostic predictor. The predictor is a gene
-expression-based prognostic model predicting the outcome of
-post-autologous stem-cell transplantation (ASCAT) outcome. **It designed
-to be used on RHL30 NanoString expression count data on relapsed Hodgkin
-lymphoma (RHL) samples**.
+expression-based prognostic model for predicting post-autologous
+stem-cell transplantation (ASCAT) outcomes. **It designed to be used on
+RHL30 NanoString expression count data on relapsed Hodgkin lymphoma
+(RHL) samples**.
 
 The predictor was published at:
 
