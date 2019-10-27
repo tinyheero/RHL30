@@ -46,6 +46,17 @@ get_sample_normalizer_value <- function(exprs_mat, normalizer_genes) {
 #' @export
 normalize_exprs_mat <- function(exprs_mat, sample_normalizer_values) {
 
+  samples <- colnames(exprs_mat)
+  if (! all(samples %in% names(sample_normalizer_values) )) {
+    stop(
+      paste(
+        "[normalize_exprs_mat]: Not all samples in the exprs_mat have sample",
+        "normalizer values"
+      )
+    )
+  }
+  sample_normalizer_values <- sample_normalizer_values[samples]
+
   message("[normalize_exprs_mat]: Normalizing the expression exprs_matrix")
   exprs_mat_norm <- sweep(exprs_mat, 2, sample_normalizer_values, "/")
   exprs_mat_norm_scaled <- exprs_mat_norm * 1000
