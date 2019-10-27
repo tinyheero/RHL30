@@ -11,9 +11,10 @@ RHL30 NanoString expression count data on relapsed Hodgkin lymphoma
 
 The predictor was published at:
 
-Chan, F. C. et al. Prognostic Model to Predict Post-Autologous Stem-Cell
-Transplantation Outcomes in Classical Hodgkin Lymphoma. J Clin Oncol
-JCO2017727925 (2017) <doi:10.1200/JCO.2017.72.7925>.
+Chan FC*, Mottok A*, et al. Prognostic Model to Predict Post-Autologous
+Stem-Cell Transplantation Outcomes in Classical Hodgkin Lymphoma. J Clin
+Oncol JCO2017727925 (2017) <doi:10.1200/JCO.2017.72.7925>. \*Contributed
+equally to this work.
 
 # How to Install
 
