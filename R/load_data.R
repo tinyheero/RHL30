@@ -9,7 +9,15 @@
 #' @return A matrix of the infile
 #' @export
 load_exprs_mat <- function(infile){
-  exprs_df <- readr::read_tsv(infile)
+  exprs_df <- 
+    readr::read_tsv(
+      infile, 
+      col_types =
+        readr::cols(
+          .default = readr::col_double(), 
+          gene_name = readr::col_character()
+        )
+    )
 
   if (! "gene_name" %in% colnames(exprs_df)) {
     stop("[load_exprs_mat]: Unable to find the gene_name column")
